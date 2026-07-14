@@ -6,13 +6,23 @@
   <div class="container header-content">
     {/* Logo */}
     <div class="logo">
-  <a href="#inicio">
-    <img src="/img/LOGO.svg" alt="Nombre del restaurante" class="logo-img" />
-  </a>
-</div>
+      <a href="#inicio">
+        <img
+          src="/img/LOGO.svg"
+          alt="Nombre del restaurante"
+          class="logo-img"
+        />
+      </a>
+    </div>
+    {/* Botón hamburguesa (solo visible en móvil) */}
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     {/* Navegación */}
-    <nav class="nav">
+    <nav class="nav" id="nav">
       <ul class="nav-list">
         <li><a href="#inicio" class="nav-link">Inicio</a></li>
         <li><a href="#about" class="nav-link">Nosotros</a></li>
@@ -24,7 +34,7 @@
 
     {/* CTA Button */}
     <div class="header-cta">
-      <button class="btn btn-primary">Reservar Mesa</button>
+      <a href="#reserva" class="btn btn-primary">Reservar Mesa</a>
     </div>
   </div>
 </header>
@@ -82,7 +92,7 @@
   }
 
   .nav-link::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -100,30 +110,87 @@
     flex-shrink: 0;
   }
 
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-dark);
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
-    .header-content {
-      flex-direction: column;
-      gap: var(--spacing-md);
-    }
-
-    .nav {
-      margin: var(--spacing-md) 0;
-      width: 100%;
-    }
-
-    .nav-list {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--spacing-md);
-    }
-
-    .logo-text {
-      font-size: 1.25rem;
-    }
-
-    .nav-link {
-      font-size: 0.9rem;
-    }
+  .menu-toggle {
+    display: flex;
   }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    margin: 0;
+    padding: var(--spacing-md) 0;
+  }
+
+  .nav.active {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .header-content {
+    flex-wrap: wrap;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+}
 </style>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+
+  menuToggle?.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    nav?.classList.toggle('active');
+  });
+
+  // Cierra el menú al hacer clic en un link
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuToggle?.classList.remove('active');
+      nav?.classList.remove('active');
+    });
+  });
+</script>
