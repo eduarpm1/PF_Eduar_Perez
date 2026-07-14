@@ -1,0 +1,78 @@
+---
+// Componente About - Descripción del negocio en 2 columnas
+---
+
+<section id="nosotros" class="about">
+  <div class="container about-grid">
+    {/* Imagen */}
+    <div class="about-image">
+      <img 
+        src="/img/about.png" 
+        alt="Equipo del restaurante"
+        loading="lazy"
+      />
+    </div>
+
+    {/* Texto */}
+    <div class="about-text">
+      <h2 class="about-title">Descubre la historia <br> detras de Umami</h2>
+      <p class="about-description">
+        Nacimos de la pasión por la cocina japonesa auténtica. Cada plato que servimos 
+        combina técnicas tradicionales con ingredientes cuidadosamente seleccionados, 
+        creando una experiencia que honra el arte culinario de Japón en cada detalle.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: var(--spacing-2xl) 0;
+    background-color: rgb(26, 26, 26);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: center;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .about-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-primary);
+    font-family: var(--font-display);
+  }
+
+  .about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-white);
+    opacity: 0.85;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    .about-title {
+      font-size: 1.75rem;
+    }
+
+    .about-description {
+      font-size: 1rem;
+    }
+  }
+</style>
