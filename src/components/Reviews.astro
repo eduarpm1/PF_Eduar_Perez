@@ -23,13 +23,7 @@ const reviews = [
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
   },
-  {
-    name: "Miguel Rodríguez",
-    role: "Chef independiente",
-    content: "Como profesional de la cocina, debo admitir que están haciendo un trabajo excepcional. La técnica, la creatividad y la pasión se sienten en cada plato.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
-  }
+ 
 ];
 ---
 
@@ -73,7 +67,7 @@ const reviews = [
 
 <style>
   .reviews {
-    background-color: var(--color-white);
+    background-color: var(--color-dark);
   }
 
   .section-header {
@@ -83,12 +77,12 @@ const reviews = [
 
   .section-header h2 {
     margin-bottom: var(--spacing-md);
-    color: var(--color-dark);
+    color: var(--color-white);
   }
 
   .section-header p {
     font-size: 1.1rem;
-    color: #6b7280;
+    color: #a5b0c5;
     max-width: 500px;
     margin: 0 auto;
   }
@@ -100,7 +94,7 @@ const reviews = [
   }
 
   .review-card {
-    background-color: var(--color-gray-light);
+    background-color: rgb(27, 27, 27);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
     border-left: 4px solid var(--color-secondary);
@@ -133,12 +127,12 @@ const reviews = [
   .review-name {
     font-size: 1rem;
     margin-bottom: 2px;
-    color: var(--color-dark);
+    color: var(--color-white);
   }
 
   .review-role {
     font-size: 0.85rem;
-    color: #9ca3af;
+    color: #bbbbbb;
     margin: 0;
   }
 
@@ -154,7 +148,7 @@ const reviews = [
   }
 
   .review-content {
-    color: #374151;
+    color: #e7e7e7;
     font-size: 0.95rem;
     line-height: 1.7;
     margin: 0;
