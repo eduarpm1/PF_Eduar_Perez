@@ -14,6 +14,7 @@
         />
       </a>
     </div>
+
     {/* Botón hamburguesa (solo visible en móvil) */}
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
       <span></span>
@@ -28,11 +29,13 @@
         <li><a href="#about" class="nav-link">Nosotros</a></li>
         <li><a href="#servicios" class="nav-link">Servicios</a></li>
         <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li class="nav-cta-mobile">
+          <a href="#reserva" class="btn btn-primary">Reservar Mesa</a>
+        </li>
       </ul>
     </nav>
 
-    {/* CTA Button */}
+    {/* CTA Button (solo visible en desktop) */}
     <div class="header-cta">
       <a href="#reserva" class="btn btn-primary">Reservar Mesa</a>
     </div>
@@ -110,6 +113,22 @@
     flex-shrink: 0;
   }
 
+  /* Arregla el texto invisible en hover del botón (a:hover global lo pisaba) */
+  .header-cta .btn,
+  .nav-cta-mobile .btn {
+    color: var(--color-white);
+  }
+
+  .header-cta .btn:hover,
+  .nav-cta-mobile .btn:hover {
+    color: var(--color-white);
+  }
+
+  /* El botón dentro del menú móvil está oculto en desktop */
+  .nav-cta-mobile {
+    display: none;
+  }
+
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -142,39 +161,48 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
+    .menu-toggle {
+      display: flex;
+    }
 
-  .nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-md);
-    margin: 0;
-    padding: var(--spacing-md) 0;
-  }
+    .header-cta {
+      display: none;
+    }
 
-  .nav.active {
-    display: block;
-  }
+    .nav-cta-mobile {
+      display: block;
+      margin-top: var(--spacing-sm);
+    }
 
-  .nav-list {
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
+    .nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow-md);
+      margin: 0;
+      padding: var(--spacing-md) 0;
+    }
 
-  .header-content {
-    flex-wrap: wrap;
-  }
+    .nav.active {
+      display: block;
+    }
 
-  .logo-text {
-    font-size: 1.25rem;
+    .nav-list {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .header-content {
+      flex-wrap: wrap;
+    }
+
+    .logo-text {
+      font-size: 1.25rem;
+    }
   }
-}
 </style>
 
 <script>
@@ -186,8 +214,8 @@
     nav?.classList.toggle('active');
   });
 
-  // Cierra el menú al hacer clic en un link
-  document.querySelectorAll('.nav-link').forEach((link) => {
+  // Cierra el menú al hacer clic en cualquier link (incluye el CTA)
+  document.querySelectorAll('.nav a').forEach((link) => {
     link.addEventListener('click', () => {
       menuToggle?.classList.remove('active');
       nav?.classList.remove('active');
