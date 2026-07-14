@@ -1,0 +1,165 @@
+---
+// Componente Reservation - Formulario de reserva de mesa
+---
+
+<section id="reserva" class="reservation">
+  <div class="container">
+    <div class="section-header">
+      <h2>Reserva tu Mesa</h2>
+      <p>Completa el formulario y confirmaremos tu reserva a la brevedad</p>
+    </div>
+
+    <form class="reservation-form" action="#" method="POST">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required placeholder="+34 600 000 000" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="tucorreo@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="comensales">Número de comensales</label>
+          <select id="comensales" name="comensales" required>
+            <option value="">Selecciona</option>
+            <option value="1">1 persona</option>
+            <option value="2">2 personas</option>
+            <option value="3">3 personas</option>
+            <option value="4">4 personas</option>
+            <option value="5">5 personas</option>
+            <option value="6+">6 o más personas</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required />
+        </div>
+
+        <div class="form-group">
+          <label for="hora">Hora</label>
+          <input type="time" id="hora" name="hora" required />
+        </div>
+      </div>
+
+      <div class="form-group form-group-full">
+        <label for="mensaje">Peticiones especiales (opcional)</label>
+        <textarea 
+          id="mensaje" 
+          name="mensaje" 
+          rows="4" 
+          placeholder="Alergias, celebraciones, preferencias de mesa..."
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-submit">Confirmar Reserva</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .reservation {
+    padding: var(--spacing-2xl) 0;
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url('/img/restaurante.png');
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .section-header h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: #d1d1d1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .reservation-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: black;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .form-group-full {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-white);
+  }
+
+  input,
+  select,
+  textarea {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-dark);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgb(22, 22, 22);
+    background-color: rgb(19, 19, 19);
+    transition: border-color var(--color-dark);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  textarea {
+    resize: vertical;
+    font-family: var(--font-body);
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .reservation-form {
+      padding: var(--spacing-lg);
+    }
+  }
+</style>
